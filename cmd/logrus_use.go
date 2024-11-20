@@ -16,6 +16,7 @@ var (
 	logFile = "gin.log"
 )
 
+// initLog 初始化日志配置
 func initLog() {
 	//打开文件
 	logFileName := path.Join(logPath, logFile)
@@ -34,25 +35,6 @@ func initLog() {
 }
 
 type formatter struct{}
-
-//func (f *TimePriorityJSONFormatter) Format(entry *logrus.Entry) ([]byte, error) {
-//	logData := LogData{}
-//	logData.Time = entry.Time.Format(constant.YYYYMMDDHHMMSS)
-//	logData.Level = entry.Level.String()
-//	logData.Message = entry.Message
-//	logData.Data = entry.Data
-//	logData.Line = entry.Caller.Line
-//	logData.Fun = strings.ReplaceAll(entry.Caller.Function[strings.LastIndex(entry.Caller.Function, constant.BASE_MODULE):], constant.BASE_MODULE+"/", "")
-//	// 序列化 JSON
-//	buffer := &bytes.Buffer{}
-//	encoder := json.NewEncoder(buffer)
-//	encoder.SetEscapeHTML(false)
-//	if err := encoder.Encode(logData); err != nil {
-//		return nil, err
-//	}
-//
-//	return buffer.Bytes(), nil
-//}
 
 func (m *formatter) Format(entry *logrus.Entry) ([]byte, error) {
 	var b *bytes.Buffer
@@ -77,12 +59,3 @@ func (m *formatter) Format(entry *logrus.Entry) ([]byte, error) {
 	b.WriteString(newLog)
 	return b.Bytes(), nil
 }
-
-//type LogData struct {
-//	Time    string        `json:"time"`
-//	Level   string        `json:"level"`
-//	Line    int           `json:"line"`
-//	Fun     string        `json:"fun"`
-//	Message string        `json:"message"`
-//	Data    logrus.Fields `json:"otherFields"`
-//}

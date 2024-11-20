@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Run 程序启动方法
 func Run() {
 	initLog()
 
@@ -20,6 +21,7 @@ func Run() {
 	}
 }
 
+// initBot 初始化机器人方法
 func initBot() {
 	bot.Init()
 }
