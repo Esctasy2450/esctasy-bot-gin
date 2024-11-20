@@ -17,8 +17,7 @@ func Init() {
 
 	user, err := api.Me(ctx)
 	if err != nil {
-		//log.Error(err)
-		logrus.Debug(err)
+		logrus.Error(err)
 		return
 	}
 
